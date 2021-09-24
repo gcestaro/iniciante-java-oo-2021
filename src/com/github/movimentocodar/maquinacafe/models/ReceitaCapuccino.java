@@ -11,7 +11,8 @@ public class ReceitaCapuccino extends Receita {
 
 	@Override
 	public void preparar() {
-		// TODO Auto-generated method stub
-		
+		new ReceitaCafeComLeite().preparar();
+
+		System.out.println("Adicionando chocolate em pó...");
 	}
 }

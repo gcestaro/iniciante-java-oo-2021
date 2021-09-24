@@ -8,6 +8,8 @@ public class ReceitaAgua extends Receita {
 
 	@Override
 	public void preparar() {
+		MaquinaCafe.get().utilizarAgua();
+
 		System.out.println("Fervendo a água...");
 	}
 }

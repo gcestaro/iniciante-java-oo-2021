@@ -3,6 +3,7 @@ package com.github.movimentocodar.maquinacafe.models;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public abstract class Receita {
 
@@ -11,6 +12,8 @@ public abstract class Receita {
 	public Receita() {
 		ingredientes = new ArrayList<>();
 	}
+
+	public abstract void preparar();
 
 	public Receita addIngrediente(Ingrediente ingrediente, BigDecimal quantidade) {
 		if (ingredienteJaAdicionado(ingrediente)) {
@@ -32,11 +35,14 @@ public abstract class Receita {
 		return this;
 	}
 
-	private boolean ingredienteJaAdicionado(Ingrediente ingrediente) {
-		return ingredientes.stream().anyMatch(ingredienteReceita -> ingredienteReceita.getIngrediente() == ingrediente);
-	}
+	public void adicionarAcucar() {
+		String quantidadeAcucar = MaquinaCafe.get()
+				.lerEntrada("Quanto de açúcar? (Escolha um valor entre 0 e 5)", Pattern.compile("[012345]+"));
 
-	public abstract void preparar();
+		substituirQuantidadeDoIngrediente(Ingrediente.ACUCAR, new BigDecimal(quantidadeAcucar));
+
+		System.out.println("Adicionando açúcar...");
+	}
 
 	public void substituirQuantidadeDoIngrediente(Ingrediente ingrediente, BigDecimal quantidade) {
 		ingredientes.stream()
@@ -49,4 +55,7 @@ public abstract class Receita {
 		return ingredientes;
 	}
 
+	private boolean ingredienteJaAdicionado(Ingrediente ingrediente) {
+		return ingredientes.stream().anyMatch(ingredienteReceita -> ingredienteReceita.getIngrediente() == ingrediente);
+	}
 }

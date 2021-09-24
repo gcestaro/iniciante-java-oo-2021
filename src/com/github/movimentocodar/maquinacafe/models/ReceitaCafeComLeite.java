@@ -10,7 +10,8 @@ public class ReceitaCafeComLeite extends Receita {
 
 	@Override
 	public void preparar() {
-		// TODO Auto-generated method stub
+		new ReceitaCafe().preparar();
 		
+		System.out.println("Adicionando leite em pó...");
 	}
 }

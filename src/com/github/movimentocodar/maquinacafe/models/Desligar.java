@@ -16,5 +16,4 @@ public class Desligar implements OpcaoMenu {
 	public int getId() {
 		return 0;
 	}
-
 }

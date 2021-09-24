@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.regex.Pattern;
 
+import com.github.movimentocodar.maquinacafe.exceptions.ReservatorioSemAguaException;
 import com.github.movimentocodar.maquinacafe.exceptions.OpcaoInvalidaException;
 import com.github.movimentocodar.maquinacafe.utils.Scanner;
 
@@ -43,24 +44,30 @@ public class MaquinaCafe {
 				.addOpcao(new Capuccino())
 				.addOpcao(new ChaLimao())
 				.addOpcao(new AguaQuente())
-				.addOpcao(new Credito())
 				.addOpcao(new ReabastecerReservatorio())
+				.addOpcao(new Credito())
 				.addOpcao(new Desligar());
 	}
 
 	public void mostrarMenu() {
+		System.out.println();
 		System.out.println("Opções disponíveis:");
 		menu.mostrarOpcoes();
 		System.out.println();
 	}
 
 	public void solicitarOpcao() {
-		String idEscolhido = lerEntrada("Selecione uma das opções:", PATTERN_OPCAO_MENU);
+		int idEscolhido = Integer.parseInt(lerEntrada("Selecione uma das opções:", PATTERN_OPCAO_MENU));
 
 		try {
-			menu.escolher(Integer.parseInt(idEscolhido));
+			menu.escolher(idEscolhido)
+					.orElseThrow(() -> new OpcaoInvalidaException(idEscolhido))
+					.selecionar();
 		} catch (OpcaoInvalidaException e) {
 			System.out.println("Opção inválida! Tente novamente");
+			solicitarOpcao();
+		} catch (ReservatorioSemAguaException e) {
+			System.out.println("Por favor, reabasteça o reservatório de água.");
 			solicitarOpcao();
 		}
 	}
@@ -82,8 +89,8 @@ public class MaquinaCafe {
 		System.exit(-1);
 	}
 
-	private void reabastecer() {
-		// TODO
+	public void reabastecer() {
+		reservatorioAgua.completar();
 	}
 
 	void solicitarNivelAcucar() {
@@ -122,6 +129,14 @@ public class MaquinaCafe {
 				break;
 			}
 		}
+	}
+
+	public boolean temAguaParaBebida() {
+		return reservatorioAgua.temDisponivelParaBebida();
+	}
+
+	public void utilizarAgua() {
+		reservatorioAgua.utilizarAgua(BigDecimal.valueOf(50));
 	}
 
 	public static MaquinaCafe get() {

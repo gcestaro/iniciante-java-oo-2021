@@ -2,8 +2,7 @@ package com.github.movimentocodar.maquinacafe.models;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.github.movimentocodar.maquinacafe.exceptions.OpcaoInvalidaException;
+import java.util.Optional;
 
 public class Menu {
 
@@ -26,12 +25,9 @@ public class Menu {
 		opcoes.forEach(OpcaoMenu::mostrar);
 	}
 
-	public void escolher(int idOpcao) {
-		OpcaoMenu opcaoEscolhida = opcoes.stream()
+	public Optional<OpcaoMenu> escolher(int idOpcao) {
+		return opcoes.stream()
 				.filter(opcao -> opcao.getId() == idOpcao)
-				.findFirst()
-				.orElseThrow(() -> new OpcaoInvalidaException(idOpcao));
-		
-		opcaoEscolhida.selecionar();
+				.findFirst();
 	}
 }

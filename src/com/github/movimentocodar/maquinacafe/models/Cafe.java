@@ -7,9 +7,4 @@ public class Cafe extends Bebida {
 	public Cafe() {
 		super(1, "Café", new ReceitaCafe(), new BigDecimal("0.5"));
 	}
-
-	@Override
-	public void selecionar() {
-		System.out.println(this.getClass().getSimpleName() + " selecionada");		
-	}
 }

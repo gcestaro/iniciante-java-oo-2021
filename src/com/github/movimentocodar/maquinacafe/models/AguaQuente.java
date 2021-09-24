@@ -5,9 +5,4 @@ public class AguaQuente extends Bebida {
 	public AguaQuente() {
 		super(5, "Água Quente", new ReceitaAgua());
 	}
-
-	@Override
-	public void selecionar() {
-		System.out.println(this.getClass().getSimpleName() + " selecionada");
-	}
 }

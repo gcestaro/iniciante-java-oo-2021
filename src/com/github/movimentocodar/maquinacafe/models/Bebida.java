@@ -5,6 +5,8 @@ import java.math.RoundingMode;
 import java.text.MessageFormat;
 import java.util.Objects;
 
+import com.github.movimentocodar.maquinacafe.exceptions.ReservatorioSemAguaException;
+
 public abstract class Bebida implements OpcaoMenu {
 
 	private int id;
@@ -26,10 +28,21 @@ public abstract class Bebida implements OpcaoMenu {
 		this.precoVenda = Objects.requireNonNull(precoVenda, "O preço não pode ser null");
 	}
 
-	public void preparar() {
-		receita.preparar();
+	@Override
+	public void selecionar() {
+		if (!MaquinaCafe.get().temAguaParaBebida()) {
+			throw new ReservatorioSemAguaException();
+		}
 
-		System.out.println("Sua bebida está pronta! Retire o(a) " + this.getClass().getSimpleName());
+		try {
+			Thread.sleep(500);
+			receita.preparar();
+			Thread.sleep(500);
+		} catch (Exception e) {
+			System.out.println("Erro ao preparar a bebida");
+		}
+
+		System.out.println("Prontinho... Retire a bebida: " + this);
 	}
 
 	@Override
@@ -54,5 +67,10 @@ public abstract class Bebida implements OpcaoMenu {
 
 	public BigDecimal getPrecoVenda() {
 		return precoVenda;
+	}
+
+	@Override
+	public String toString() {
+		return this.nome;
 	}
 }

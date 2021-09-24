@@ -9,7 +9,10 @@ public class ReceitaChaLimao extends Receita {
 
 	@Override
 	public void preparar() {
-		// TODO Auto-generated method stub
+		adicionarAcucar();
+
+		new ReceitaAgua().preparar();
 		
+		System.out.println("Adicionando chá de limão...");
 	}
 }
