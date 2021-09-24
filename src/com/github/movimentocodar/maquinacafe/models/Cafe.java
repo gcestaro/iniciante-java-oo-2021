@@ -10,7 +10,6 @@ public class Cafe extends Bebida {
 
 	@Override
 	public void selecionar() {
-		// TODO Auto-generated method stub
-		
+		System.out.println(this.getClass().getSimpleName() + " selecionada");		
 	}
 }

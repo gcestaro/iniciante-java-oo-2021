@@ -5,4 +5,6 @@ public interface OpcaoMenu {
 	void mostrar();
 	
 	void selecionar();
+	
+	int getId();
 }

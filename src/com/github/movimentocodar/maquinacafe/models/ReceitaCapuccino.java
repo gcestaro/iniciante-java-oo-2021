@@ -8,4 +8,10 @@ public class ReceitaCapuccino extends Receita {
 				.addIngrediente(Ingrediente.CHOCOLATE)
 				.addIngrediente(Ingrediente.ACUCAR);
 	}
+
+	@Override
+	public void preparar() {
+		// TODO Auto-generated method stub
+		
+	}
 }

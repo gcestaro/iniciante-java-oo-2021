@@ -26,6 +26,12 @@ public abstract class Bebida implements OpcaoMenu {
 		this.precoVenda = Objects.requireNonNull(precoVenda, "O preço não pode ser null");
 	}
 
+	public void preparar() {
+		receita.preparar();
+
+		System.out.println("Sua bebida está pronta! Retire o(a) " + this.getClass().getSimpleName());
+	}
+
 	@Override
 	public void mostrar() {
 		String mensagem = MessageFormat.format("{0} - {1} - R$ {2}", id, nome,

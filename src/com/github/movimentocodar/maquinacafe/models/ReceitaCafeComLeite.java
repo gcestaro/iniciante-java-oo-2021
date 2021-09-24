@@ -7,4 +7,10 @@ public class ReceitaCafeComLeite extends Receita {
 				.addIngrediente(Ingrediente.LEITE)
 				.addIngrediente(Ingrediente.ACUCAR);
 	}
+
+	@Override
+	public void preparar() {
+		// TODO Auto-generated method stub
+		
+	}
 }

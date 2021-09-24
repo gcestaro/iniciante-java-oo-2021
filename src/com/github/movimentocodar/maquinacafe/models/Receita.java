@@ -13,12 +13,40 @@ public abstract class Receita {
 	}
 
 	public Receita addIngrediente(Ingrediente ingrediente, BigDecimal quantidade) {
-		ingredientes.add(new IngredienteReceita(ingrediente, quantidade));
+		if (ingredienteJaAdicionado(ingrediente)) {
+			substituirQuantidadeDoIngrediente(ingrediente, ingrediente.getQuantidade());
+		} else {
+			ingredientes.add(new IngredienteReceita(ingrediente, quantidade));
+		}
+
 		return this;
 	}
 
 	public Receita addIngrediente(Ingrediente ingrediente) {
-		ingredientes.add(new IngredienteReceita(ingrediente));
+		if (ingredienteJaAdicionado(ingrediente)) {
+			substituirQuantidadeDoIngrediente(ingrediente, ingrediente.getQuantidade());
+		} else {
+			ingredientes.add(new IngredienteReceita(ingrediente));
+		}
+
 		return this;
 	}
+
+	private boolean ingredienteJaAdicionado(Ingrediente ingrediente) {
+		return ingredientes.stream().anyMatch(ingredienteReceita -> ingredienteReceita.getIngrediente() == ingrediente);
+	}
+
+	public abstract void preparar();
+
+	public void substituirQuantidadeDoIngrediente(Ingrediente ingrediente, BigDecimal quantidade) {
+		ingredientes.stream()
+				.filter(ingredienteReceita -> ingredienteReceita.getIngrediente() == ingrediente)
+				.findFirst()
+				.ifPresent(ingredienteReceita -> ingredienteReceita.setQuantidade(quantidade));
+	}
+
+	public List<IngredienteReceita> getIngredientes() {
+		return ingredientes;
+	}
+
 }

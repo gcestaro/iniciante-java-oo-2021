@@ -6,11 +6,16 @@ public class Credito implements OpcaoMenu {
 
 	@Override
 	public void mostrar() {
-		System.out.println(ID + " - Adicionar crédito");
+		System.out.println(getId() + " - Adicionar crédito");
 	}
 
 	@Override
 	public void selecionar() {
+		System.out.println(this.getClass().getSimpleName() + " selecionada");
+	}
 
+	@Override
+	public int getId() {
+		return ID;
 	}
 }

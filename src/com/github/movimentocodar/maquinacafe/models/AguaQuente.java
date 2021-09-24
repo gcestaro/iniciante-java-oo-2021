@@ -8,6 +8,6 @@ public class AguaQuente extends Bebida {
 
 	@Override
 	public void selecionar() {
-
+		System.out.println(this.getClass().getSimpleName() + " selecionada");
 	}
 }

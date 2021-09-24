@@ -25,4 +25,7 @@ public class IngredienteReceita {
 		return quantidade;
 	}
 
+	public void setQuantidade(BigDecimal quantidade) {
+		this.quantidade = quantidade;
+	}
 }
