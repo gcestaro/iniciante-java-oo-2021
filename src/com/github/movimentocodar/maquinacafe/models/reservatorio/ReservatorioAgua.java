@@ -1,4 +1,4 @@
-package com.github.movimentocodar.maquinacafe.models;
+package com.github.movimentocodar.maquinacafe.models.reservatorio;
 
 import java.math.BigDecimal;
 
@@ -9,9 +9,6 @@ public class ReservatorioAgua {
 	private static final BigDecimal CAPACIDADE = BigDecimal.valueOf(1000);;
 
 	private BigDecimal quantidade;
-
-	public ReservatorioAgua() {
-	}
 
 	public ReservatorioAgua(BigDecimal quantidade) {
 		this.quantidade = quantidade;

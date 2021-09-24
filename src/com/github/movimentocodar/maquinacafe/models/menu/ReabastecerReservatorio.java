@@ -1,4 +1,6 @@
-package com.github.movimentocodar.maquinacafe.models;
+package com.github.movimentocodar.maquinacafe.models.menu;
+
+import com.github.movimentocodar.maquinacafe.models.MaquinaCafe;
 
 public class ReabastecerReservatorio implements OpcaoMenu {
 

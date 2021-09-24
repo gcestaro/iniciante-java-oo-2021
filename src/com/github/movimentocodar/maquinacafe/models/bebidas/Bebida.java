@@ -1,4 +1,4 @@
-package com.github.movimentocodar.maquinacafe.models;
+package com.github.movimentocodar.maquinacafe.models.bebidas;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -6,6 +6,9 @@ import java.text.MessageFormat;
 import java.util.Objects;
 
 import com.github.movimentocodar.maquinacafe.exceptions.ReservatorioSemAguaException;
+import com.github.movimentocodar.maquinacafe.models.MaquinaCafe;
+import com.github.movimentocodar.maquinacafe.models.menu.OpcaoMenu;
+import com.github.movimentocodar.maquinacafe.models.receitas.Receita;
 
 public abstract class Bebida implements OpcaoMenu {
 

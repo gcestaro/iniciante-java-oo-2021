@@ -1,4 +1,4 @@
-package com.github.movimentocodar.maquinacafe.models;
+package com.github.movimentocodar.maquinacafe.models.menu;
 
 public class Credito implements OpcaoMenu {
 

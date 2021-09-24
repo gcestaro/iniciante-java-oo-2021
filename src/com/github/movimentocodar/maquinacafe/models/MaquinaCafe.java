@@ -1,39 +1,41 @@
 package com.github.movimentocodar.maquinacafe.models;
 
 import java.math.BigDecimal;
-import java.text.MessageFormat;
 import java.util.regex.Pattern;
 
-import com.github.movimentocodar.maquinacafe.exceptions.ReservatorioSemAguaException;
 import com.github.movimentocodar.maquinacafe.exceptions.OpcaoInvalidaException;
+import com.github.movimentocodar.maquinacafe.exceptions.ReservatorioSemAguaException;
+import com.github.movimentocodar.maquinacafe.models.bebidas.AguaQuente;
+import com.github.movimentocodar.maquinacafe.models.bebidas.Cafe;
+import com.github.movimentocodar.maquinacafe.models.bebidas.CafeComLeite;
+import com.github.movimentocodar.maquinacafe.models.bebidas.Capuccino;
+import com.github.movimentocodar.maquinacafe.models.bebidas.ChaLimao;
+import com.github.movimentocodar.maquinacafe.models.cofre.Cofre;
+import com.github.movimentocodar.maquinacafe.models.menu.Credito;
+import com.github.movimentocodar.maquinacafe.models.menu.Desligar;
+import com.github.movimentocodar.maquinacafe.models.menu.Menu;
+import com.github.movimentocodar.maquinacafe.models.menu.ReabastecerReservatorio;
+import com.github.movimentocodar.maquinacafe.models.reservatorio.ReservatorioAgua;
 import com.github.movimentocodar.maquinacafe.utils.Scanner;
 
 public class MaquinaCafe {
 
 	private static final Pattern PATTERN_OPCAO_MENU = Pattern.compile("\\d");
-	private static final Pattern PATTERN_ALTERACAO_NIVEL_ACUCAR = Pattern.compile("[\\d+-]+");
-	private static final Pattern PATTERN_DESEJA_CONTINUAR = Pattern.compile("[snSN]+");
-
-	private static final String MENSAGEM_NIVEL_ACUCAR = "O nível de açucar atual é {0}. Digite um número de 0 a 5 para alterar. Você também pode digitar + para aumentar ou - para diminuir em 1 nível: ";
-	private static final String MENSAGEM_NIVEL_ACUCAR_SELECIONADO = "O nível de açucar selecionado é {0}. Deseja alterar? (s/n)";
 
 	private static MaquinaCafe maquinaCafe;
 
 	private Menu menu;
 
-	private ReservatorioAgua reservatorioAgua;
-
 	private Cofre cofre;
 
 	private Scanner scanner;
 
-	private NivelAcucar nivelAcucar;
+	private ReservatorioAgua reservatorioAgua;
 
 	private MaquinaCafe() {
 		cofre = new Cofre();
 		scanner = new Scanner();
 		reservatorioAgua = new ReservatorioAgua(BigDecimal.valueOf(1000));
-		nivelAcucar = NivelAcucar.MODERADO;
 		construirMenu();
 	}
 
@@ -91,44 +93,6 @@ public class MaquinaCafe {
 
 	public void reabastecer() {
 		reservatorioAgua.completar();
-	}
-
-	void solicitarNivelAcucar() {
-		String desejaContinuar;
-		do {
-			String codigoNivelAcucarDigitado = this.lerEntrada(formatarMensagemNivelAcucar(),
-					PATTERN_ALTERACAO_NIVEL_ACUCAR);
-
-			converterNivelDigitadoParaNivelAcucar(codigoNivelAcucarDigitado);
-
-			desejaContinuar = this.lerEntrada(formatarMensagemNivelAcucarSelecionado(), PATTERN_DESEJA_CONTINUAR);
-
-		} while (!("n".equalsIgnoreCase(desejaContinuar)));
-	}
-
-	private String formatarMensagemNivelAcucar() {
-		return MessageFormat.format(MENSAGEM_NIVEL_ACUCAR, this.nivelAcucar.getNivel());
-	}
-
-	private String formatarMensagemNivelAcucarSelecionado() {
-		return MessageFormat.format(MENSAGEM_NIVEL_ACUCAR_SELECIONADO, this.nivelAcucar.getNivel());
-	}
-
-	private void converterNivelDigitadoParaNivelAcucar(String codigoNivelAcucarDigitado) {
-		try {
-			int codigoNivel = Integer.parseInt(codigoNivelAcucarDigitado);
-
-			this.nivelAcucar = NivelAcucar.getByOrdinal(codigoNivel);
-		} catch (NumberFormatException e) {
-			switch (codigoNivelAcucarDigitado) {
-			case "+":
-				this.nivelAcucar = this.nivelAcucar.aumentar();
-				break;
-			case "-":
-				this.nivelAcucar = this.nivelAcucar.diminuir();
-				break;
-			}
-		}
 	}
 
 	public boolean temAguaParaBebida() {

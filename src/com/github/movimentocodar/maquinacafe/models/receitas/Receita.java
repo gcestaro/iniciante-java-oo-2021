@@ -1,9 +1,13 @@
-package com.github.movimentocodar.maquinacafe.models;
+package com.github.movimentocodar.maquinacafe.models.receitas;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
+import com.github.movimentocodar.maquinacafe.models.MaquinaCafe;
+import com.github.movimentocodar.maquinacafe.models.ingredientes.Ingrediente;
+import com.github.movimentocodar.maquinacafe.models.ingredientes.IngredienteReceita;
 
 public abstract class Receita {
 

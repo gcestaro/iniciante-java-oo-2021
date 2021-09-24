@@ -1,4 +1,4 @@
-package com.github.movimentocodar.maquinacafe.models;
+package com.github.movimentocodar.maquinacafe.models.menu;
 
 import java.util.ArrayList;
 import java.util.List;
