@@ -6,7 +6,7 @@ public class ReabastecerReservatorio implements OpcaoMenu {
 
 	@Override
 	public void mostrar() {
-		System.out.println(getId() + " - Reabastecer reservatório");
+		System.out.println(getId() + " - Reabastecer reservatÃ³rio");
 	}
 
 	@Override

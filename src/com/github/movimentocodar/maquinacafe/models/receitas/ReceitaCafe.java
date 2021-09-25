@@ -16,6 +16,6 @@ public class ReceitaCafe extends Receita {
 
 		new ReceitaAgua().preparar();
 
-		System.out.println("Adicionando pó de café...");
+		System.out.println("Adicionando pÃ³ de cafÃ©...");
 	}
 }

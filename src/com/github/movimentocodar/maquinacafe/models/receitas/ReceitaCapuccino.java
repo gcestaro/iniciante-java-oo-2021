@@ -15,6 +15,6 @@ public class ReceitaCapuccino extends Receita {
 	public void preparar() {
 		new ReceitaCafeComLeite().preparar();
 
-		System.out.println("Adicionando chocolate em pó...");
+		System.out.println("Adicionando chocolate em pÃ³...");
 	}
 }

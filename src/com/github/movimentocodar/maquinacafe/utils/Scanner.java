@@ -21,7 +21,7 @@ public class Scanner implements Closeable {
 			try {
 				codigo = scanner.next(regexEsperada);
 			} catch (InputMismatchException ime) {
-				System.out.println("Não foi possível identificar sua escolha. Por favor, tente novamente.");
+				System.out.println("NÃ£o foi possÃ­vel identificar sua escolha. Por favor, tente novamente.");
 				codigo = null;
 				scanner.next();
 			} catch (Exception e) {

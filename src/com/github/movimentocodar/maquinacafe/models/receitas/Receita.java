@@ -41,11 +41,11 @@ public abstract class Receita {
 
 	public void adicionarAcucar() {
 		String quantidadeAcucar = MaquinaCafe.get()
-				.lerEntrada("Quanto de açúcar? (Escolha um valor entre 0 e 5)", Pattern.compile("[012345]+"));
+				.lerEntrada("Quanto de aÃ§Ãºcar? (Escolha um valor entre 0 e 5)", Pattern.compile("[012345]+"));
 
 		substituirQuantidadeDoIngrediente(Ingrediente.ACUCAR, new BigDecimal(quantidadeAcucar));
 
-		System.out.println("Adicionando açúcar...");
+		System.out.println("Adicionando aÃ§Ãºcar...");
 	}
 
 	public void substituirQuantidadeDoIngrediente(Ingrediente ingrediente, BigDecimal quantidade) {

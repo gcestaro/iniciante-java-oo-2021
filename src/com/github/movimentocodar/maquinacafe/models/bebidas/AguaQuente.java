@@ -5,6 +5,6 @@ import com.github.movimentocodar.maquinacafe.models.receitas.ReceitaAgua;
 public class AguaQuente extends Bebida {
 
 	public AguaQuente() {
-		super(5, "¡gua Quente", new ReceitaAgua());
+		super(5, "√Ågua Quente", new ReceitaAgua());
 	}
 }

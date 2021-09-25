@@ -7,6 +7,6 @@ public class OpcaoInvalidaException extends RuntimeException {
 	private static final long serialVersionUID = 2235718728815303344L;
 
 	public OpcaoInvalidaException(int id) {
-		super(MessageFormat.format("OpÁ„o {0} inv·lida", id));
+		super(MessageFormat.format("Op√ß√£o {0} inv√°lida", id));
 	}
 }

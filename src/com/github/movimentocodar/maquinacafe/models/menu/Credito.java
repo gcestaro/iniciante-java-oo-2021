@@ -21,7 +21,7 @@ public class Credito implements OpcaoMenu {
 
 	@Override
 	public void mostrar() {
-		System.out.println(getId() + " - Adicionar crédito");
+		System.out.println(getId() + " - Adicionar crÃ©dito");
 	}
 
 	@Override

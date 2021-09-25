@@ -53,23 +53,23 @@ public class MaquinaCafe {
 
 	public void mostrarMenu() {
 		System.out.println();
-		System.out.println("OpÁıes disponÌveis:");
+		System.out.println("Op√ß√µes dispon√≠veis:");
 		menu.mostrarOpcoes();
 		System.out.println();
 	}
 
 	public void solicitarOpcao() {
-		int idEscolhido = Integer.parseInt(lerEntrada("Selecione uma das opÁıes:", PATTERN_OPCAO_MENU));
+		int idEscolhido = Integer.parseInt(lerEntrada("Selecione uma das op√ß√µes:", PATTERN_OPCAO_MENU));
 
 		try {
 			menu.escolher(idEscolhido)
 					.orElseThrow(() -> new OpcaoInvalidaException(idEscolhido))
 					.selecionar();
 		} catch (OpcaoInvalidaException e) {
-			System.out.println("OpÁ„o inv·lida! Tente novamente");
+			System.out.println("Op√ß√£o inv√°lida! Tente novamente");
 			solicitarOpcao();
 		} catch (ReservatorioSemAguaException e) {
-			System.out.println("Por favor, reabasteÁa o reservatÛrio de ·gua.");
+			System.out.println("Por favor, reabaste√ßa o reservat√≥rio de √°gua.");
 			solicitarOpcao();
 		}
 	}

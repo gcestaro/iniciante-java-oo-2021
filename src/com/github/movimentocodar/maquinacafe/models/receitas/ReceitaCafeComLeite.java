@@ -14,6 +14,6 @@ public class ReceitaCafeComLeite extends Receita {
 	public void preparar() {
 		new ReceitaCafe().preparar();
 		
-		System.out.println("Adicionando leite em pó...");
+		System.out.println("Adicionando leite em pÃ³...");
 	}
 }

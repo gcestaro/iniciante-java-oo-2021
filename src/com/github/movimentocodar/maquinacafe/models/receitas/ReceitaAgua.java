@@ -13,6 +13,6 @@ public class ReceitaAgua extends Receita {
 	public void preparar() {
 		MaquinaCafe.get().utilizarAgua();
 
-		System.out.println("Fervendo a água...");
+		System.out.println("Fervendo a Ã¡gua...");
 	}
 }

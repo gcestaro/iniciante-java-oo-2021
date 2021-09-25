@@ -15,6 +15,6 @@ public class ReceitaChaLimao extends Receita {
 
 		new ReceitaAgua().preparar();
 		
-		System.out.println("Adicionando ch· de lim„o...");
+		System.out.println("Adicionando ch√° de lim√£o...");
 	}
 }

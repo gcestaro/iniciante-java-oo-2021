@@ -27,12 +27,12 @@ public class ReservatorioAgua {
 	}
 
 	public void abastecer(BigDecimal quantidade) {
-		System.out.println("Abastecendo o reservatório com " + quantidade.setScale(2) + "ml.");
+		System.out.println("Abastecendo o reservatÃ³rio com " + quantidade.setScale(2) + "ml.");
 
 		BigDecimal soma = this.quantidade.add(quantidade);
 
 		if (soma.compareTo(CAPACIDADE) > 0) {
-			throw new IllegalStateException("Excedeu a capacidade do reservatório");
+			throw new IllegalStateException("Excedeu a capacidade do reservatÃ³rio");
 		}
 
 		this.quantidade = soma;

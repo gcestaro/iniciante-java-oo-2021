@@ -27,8 +27,8 @@ public abstract class Bebida implements OpcaoMenu {
 	public Bebida(int id, String nome, Receita receita, BigDecimal precoVenda) {
 		this.id = id;
 		this.receita = receita;
-		this.nome = Objects.requireNonNull(nome, "O nome da bebida n„o pode ser null");
-		this.precoVenda = Objects.requireNonNull(precoVenda, "O preÁo n„o pode ser null");
+		this.nome = Objects.requireNonNull(nome, "O nome da bebida n√£o pode ser null");
+		this.precoVenda = Objects.requireNonNull(precoVenda, "O pre√ßo n√£o pode ser null");
 	}
 
 	@Override
